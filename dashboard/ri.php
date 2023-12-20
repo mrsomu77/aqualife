@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Rental Information</title>
+
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <!-- font awesome style -->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+
+    <div class="header_bottom">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" style="margin-top: -90px;" href="am.html">
+                    <span>
+                        AQUA LIFE
+                    </span>
+                </a>
+                <div class="slider_section">
+                    <div class="detail-box">
+                        <a style="margin-left: 1020px;" href="index.html">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section " style="margin-top: -86px;">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-18">
+                    <div class="detail-box">
+                        <h1>
+                            Rental Information
+                        </h1>
+
+                        <main style="max-width: 1200px; margin: 20px auto; background-color: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px; overflow: hidden;">
+
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                                <thead>
+                                    <tr>
+                                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #fd7e14; color: #fff; text-align: left;">Name</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #fd7e14; color: #fff; text-align: left;">Email</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #fd7e14; color: #fff; text-align: left;">Phone</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #fd7e14; color: #fff; text-align: left;">Issue Date</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #fd7e14; color: #fff; text-align: left;">Return Date</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #fd7e14; color: #fff; text-align: left;">Address</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #fd7e14; color: #fff; text-align: left;">City</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #fd7e14; color: #fff; text-align: left;">State</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; background-color: #fd7e14; color: #fff; text-align: left;">pincode</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    try {
+
+                                        $conn = new PDO("mysql:host=localhost;dbname=aqua", "root", "");
+                                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                        $stmt = $conn->prepare("select * from renn");
+                                        $stmt->execute();
+                                        $result = $stmt->fetchAll();
+
+                                        foreach ($result as $row) {
+                                    ?>
+                                            <tr>
+                                                <th><?php echo $row["name"]; ?></th>
+                                                <th><?php echo $row["mail"]; ?></th>
+                                                <th><?php echo $row["phone"]; ?></th>
+                                                <th><?php echo $row["issuedate"]; ?></th>
+                                                <th><?php echo $row["returndate"]; ?></th>
+                                                <th><?php echo $row["address"]; ?></th>
+                                                <th><?php echo $row["city"]; ?></th>
+                                                <th><?php echo $row["state"]; ?></th>
+                                                <th><?php echo $row["pincode"]; ?></th>
+                                            </tr>
+                                    <?php
+                                        }
+
+                                    } catch (PDOException $e) {
+
+                                    }
+                                    ?>
+                                    <!-- Add more rows as needed -->
+                                </tbody>
+                            </table>
+
+                        </main>
+                    </div>
+                </div>
+                <!-- <div class="col-md-3">
+            <div class="img-box">
+              <img src="images/slider-img.jpg" alt="">
+            </div>
+          </div> -->
+            </div>
+        </div>
+    </section>
+    <!-- end slider section -->
+    </div>
+
+
+
+    <!-- end info_section -->
+
+    <!-- footer section -->
+    <br><br><br><br><br><br><br><br>
+    <footer class="footer_section">
+        <div class="container">
+            <p>
+                &copy; <span id="displayDateYear"></span> All Rights Reserved By
+                <a href="https://html.design/">AQUA LIFE</a>
+            </p>
+        </div>
+    </footer>
+    <!-- footer section -->
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    </script>
+    <script src="js/custom.js"></script>
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+    <!-- End
